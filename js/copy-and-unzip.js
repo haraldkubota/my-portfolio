@@ -5,6 +5,7 @@
 const fs = require('fs')
 const yauzl = require('yauzl')
 const stream = require('stream')
+const mime = require('mime-types')
 
 const AWS = require('aws-sdk')
 const s3 = new AWS.S3({
@@ -66,7 +67,7 @@ function uploadUnzip(zipFile, params) {
 function uploadFromStream(input) {
     var pass = new stream.PassThrough()
 
-    var contentType = (input.fileName.endsWith('.html') ? 'text/html' : 'text/javascript')
+    var contentType = mime.lookup(input.fileName) || 'application/octet-stream'
 
     var params = {
         Bucket: 'www.aws.qw2.org',
@@ -76,7 +77,7 @@ function uploadFromStream(input) {
         ContentType: contentType
     }
     console.log("Uploading ", params.Key)
-    
+
   s3.upload(params, function(err, data) {
       if(err) throw err
   })

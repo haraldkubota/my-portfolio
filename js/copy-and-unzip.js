@@ -8,10 +8,13 @@ const stream = require('stream')
 const mime = require('mime-types')
 
 const AWS = require('aws-sdk')
+const sns = new AWS.SNS({
+  apiVersion: '2010-03-31'
+})
 const s3 = new AWS.S3({
   apiVersion: '2006-03-01',
   region: 'us-east-1'
-});
+})
 const sourceParams = {
   Bucket: 'builds.qw2.org',
   Key: 'builds/portfolioBuild.zip',
@@ -60,6 +63,14 @@ function uploadUnzip(zipFile, params) {
         })
       }
     })
+  })
+  console.log('uploading unzipped file completed')
+  sns.publish({
+    Message: 'Portfolio updated',
+    MessageAttributes: {
+      DataType: 'String'
+    }
+    Subject 'Unzip is done!'
   })
 }
 

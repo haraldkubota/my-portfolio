@@ -44,13 +44,15 @@ function downloadFile(params, destpath) {
 function uploadUnzip(zipFile, params) {
   let input = {}
 
-  console.log("Now got "+zipFile+" and expanding to ", params)
-  yauzl.open(zipFile, {lazyEntries: true}, function(err, zipFile) {
+  console.log("Now got " + zipFile + " and expanding to ", params)
+  yauzl.open(zipFile, {
+    lazyEntries: true
+  }, function(err, zipFile) {
     if (err) throw err;
     zipFile.readEntry()
     zipFile.on("entry", (entry) => {
       if (/\/$/.test(entry.fileName)) {
-        console.log("Dir "+entry.fileName)
+        console.log("Dir " + entry.fileName)
       } else {
         input.fileName = entry.fileName
 
@@ -76,21 +78,21 @@ function uploadUnzip(zipFile, params) {
 
 
 function uploadFromStream(input) {
-    var pass = new stream.PassThrough()
+  var pass = new stream.PassThrough()
 
-    var contentType = mime.lookup(input.fileName) || 'application/octet-stream'
+  var contentType = mime.lookup(input.fileName) || 'application/octet-stream'
 
-    var params = {
-        Bucket: 'www.aws.qw2.org',
-        Key: input.fileName,
-        Body: pass,
-        ACL: 'public-read',
-        ContentType: contentType
-    }
-    console.log("Uploading ", params.Key)
+  var params = {
+    Bucket: 'www.aws.qw2.org',
+    Key: input.fileName,
+    Body: pass,
+    ACL: 'public-read',
+    ContentType: contentType
+  }
+  console.log("Uploading ", params.Key)
 
   s3.upload(params, function(err, data) {
-      if(err) throw err
+    if (err) throw err
   })
 
   return pass

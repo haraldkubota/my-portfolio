@@ -16,8 +16,9 @@ function sendSns(txt) {
     TargetArn: 'arn:aws:sns:us-east-1:282117872970:Deploy_Portfolio_Update',
     Subject: txt
   }, (err, data) => {
-  if (err) console.log("Error: ", err)
-    else console.log("Sent SNS, returned ", data)})
+    if (err) console.log("Error: ", err)
+    else console.log("Sent SNS, returned ", data)
+  })
 }
 
 sendSns("Testing SNS from Node.JS");

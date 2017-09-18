@@ -8,5 +8,6 @@ artifacts:
     - index.html
     - error.html
     - favicon.ico
+    - react.html
     - styles/*
     - images/*

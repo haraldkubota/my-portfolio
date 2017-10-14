@@ -131,7 +131,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section__example:active {
-  transition: 1.05s all;
+  transition: 0.5s all;
   width: 34rem;
   height: 34rem;
 }

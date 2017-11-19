@@ -6,7 +6,7 @@ import ExampleWork from './example-work'
 const myWork = [{
   'title': "Orange Pi Zero",
   'href': 'https://github.com/haraldkubota/orange_pi_gpio',
-  'desc': 'Orange Pi is like Raspberry Pi, but slightly different. Less documentation mainly, so adding a simple and working example was what I looking for. Since I found nothing, I created the example i was looking for.',
+  'desc': 'Orange Pi is like Raspberry Pi, but slightly different. Less documentation mainly, so adding a simple and working example was needed. Since I found nothing, I created the example I was initially looking for.',
   'image': {
     'desc': "Orange Pi Zero",
     'src': "images/opz-colorpins.png",
@@ -15,7 +15,7 @@ const myWork = [{
 },{
   'title': "LIFX",
   'href': 'https://github.com/haraldkubota/lifx',
-  'desc': 'LIFX was one of the first ones to have Internet controlled LED lamps, so I got 2. While it took long until they offered an API, when they did, I had to test it with NodeJS.',
+  'desc': 'LIFX was one of the first ones to have Internet controlled LED lamps, so I got 2. While it took long until they offered an API, when they did, I had to test it with NodeJS. Main goal was to change the intensity and color temperature during the day. Nowadays the app got much better with a nice Day&Dusk mode which does exactly that.',
   'image': {
     'desc': "LIFX lamp",
     'src': "images/lifx.png",

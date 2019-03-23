@@ -2,6 +2,10 @@ import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 
 import ExampleWorkModal from '../js/example-work-modal';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({ adapter: new Adapter() })
+
 
 const myExample = {
   'title': "Cats",
@@ -29,7 +33,7 @@ describe("ExampleWorkModal component", () => {
 	})
 
 	it("should link to our project", () => {
-		expect(anchors.node.props.href).toEqual(myExample.href);
+		expect(anchors.prop('href')).toEqual(myExample.href);
 	})
 
 	it("should have the modal class set correctly", () => {

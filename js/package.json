@@ -9,7 +9,7 @@
   "author": "Harald Kubota",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.112.0",
+    "aws-sdk": "^2.814.0",
     "stream": "0.0.2",
     "yauzl": "^2.8.0"
   }
